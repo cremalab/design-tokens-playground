@@ -1,0 +1,30 @@
+{
+  "size": {
+    "spacing": {
+      "extra-small" : {
+        "value": "0.25",
+        "comment": "the smallest unit of spacing"
+      },
+      "small" : {
+        "value": "0.5",
+        "comment": "the small unit of spacing"
+      },
+      "medium": {
+        "value": "1",
+        "comment": "the medium unit of spacing"
+      },
+      "large" : {
+        "value": "2",
+        "comment": "the large unit of spacing"
+      },
+      "extra-large" : {
+        "value": "4",
+        "comment": "the largest unit of spacing"
+      },
+      "base"  : {
+        "value": "{size.spacing.medium.value}",
+        "comment": "the base spacing unit"
+      }
+    }
+  }
+}
