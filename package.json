@@ -1,0 +1,112 @@
+{
+  "name": "crema-app-web",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-scripts": "5.0.1",
+    "web-vitals": "2.1.4"
+  },
+  "devDependencies": {
+    "@babel/core": "7.17.10",
+    "@storybook/addon-actions": "6.4.22",
+    "@storybook/addon-centered": "5.3.21",
+    "@storybook/addon-essentials": "6.4.22",
+    "@storybook/addon-links": "6.4.22",
+    "@storybook/addons": "6.4.22",
+    "@storybook/builder-webpack5": "6.4.22",
+    "@storybook/cli": "6.4.22",
+    "@storybook/manager-webpack5": "6.4.22",
+    "@storybook/node-logger": "6.4.22",
+    "@storybook/preset-create-react-app": "4.1.0",
+    "@storybook/react": "6.4.22",
+    "@testing-library/cypress": "8.0.2",
+    "@testing-library/jest-dom": "5.16.4",
+    "@testing-library/react": "12.1.5",
+    "@testing-library/user-event": "14.1.1",
+    "@types/jest": "27.5.0",
+    "@types/node": "16.11.33",
+    "@types/react": "17.0.45",
+    "@types/react-dom": "17.0.16",
+    "change-case": "4.1.2",
+    "cross-env": "7.0.3",
+    "cypress": "9.6.0",
+    "dependency-cruiser": "11.7.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-cypress": "2.12.1",
+    "eslint-plugin-jest": "26.1.5",
+    "eslint-plugin-storybook": "0.5.11",
+    "husky": "7.0.4",
+    "husky-add-issue-tracker": "0.1.1",
+    "hygen": "6.2.0",
+    "npm-run-all": "4.1.5",
+    "prettier": "2.6.2",
+    "serve": "13.0.2",
+    "source-map-explorer": "2.5.2",
+    "start-server-and-test": "1.14.0",
+    "typescript": "4.6.4",
+    "wait-on": "6.0.1",
+    "webpack": "5.72.0"
+  },
+  "optionalDependencies": {
+    "fsevents": "*"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "start:ci": "run-s build static",
+    "build": "react-scripts build",
+    "test": "react-scripts test --testMatch=[ \"**/?(*.)test.ts?(x)\" ]",
+    "new:component": "hygen component new",
+    "new:type": "hygen type new",
+    "new:util": "hygen util new",
+    "static": "serve -s build -p 5000",
+    "deps:graph": "depcruise --validate --output-type dot -- src | dot -T svg > dependency-graph.svg",
+    "deps:report": "depcruise --validate --output-type err-html --output-to dependency-report.html -- src",
+    "test:ci": "cross-env CI=true run-s test:lint test:deps test:types \"test:unit -- -i\" test:e2e:ci",
+    "test:deps": "depcruise --validate -- src",
+    "test:e2e": "cypress run",
+    "test:e2e:ci": "cross-env CYPRESS_baseUrl=http://localhost:5000 start-server-and-test start:ci http://localhost:5000 \"cypress run --port 5052\"",
+    "test:lint": "eslint . --ext js,ts,tsx && prettier . --check --loglevel warn",
+    "test:lint:fix": "eslint . --ext js,ts,tsx --fix && prettier . --write",
+    "test:playground": "cross-env BABEL_ENV=development start-storybook -p 9009",
+    "test:playground:build": "build-storybook",
+    "test:playground:ci": "start-storybook -p 5000 --ci",
+    "test:playground:smoketest": "start-storybook --smoke-test",
+    "test:types": "tsc",
+    "test:unit": "npm run test --",
+    "test:unit:coverage": "npm run test:unit -- --coverage --watchAll=false",
+    "test:unit:coverage:watch": "npm run test:unit:coverage -- --watchAll=true",
+    "test:analyze": "run-s test:analyze:*",
+    "test:analyze:build": "npm run build",
+    "test:analyze:explore": "source-map-explorer build/static/js/main.*",
+    "build-storybook": "build-storybook -s public",
+    "storybook": "start-storybook -p 6006 -s public",
+    "prepare": "husky install"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!**/*.d.ts",
+      "!node_modules",
+      "!src/**/?(*.)stories.{ts,tsx}",
+      "!src/**/?(*.)test.{ts,tsx}",
+      "!src/**/index.{ts,tsx}",
+      "!src/types/*",
+      "!src/reportWebVitals.ts",
+      "!src/serviceWorker.ts"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
