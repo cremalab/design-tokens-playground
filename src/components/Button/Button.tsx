@@ -1,5 +1,10 @@
 import classNames from "classnames"
-import { ButtonHTMLAttributes, DetailedHTMLProps, MouseEventHandler, ReactChild } from "react"
+import {
+  ButtonHTMLAttributes,
+  DetailedHTMLProps,
+  MouseEventHandler,
+  ReactChild,
+} from "react"
 
 type ButtonProps = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
@@ -13,7 +18,12 @@ interface Props {
   onClick?: MouseEventHandler<HTMLButtonElement>
 }
 
-export function Button({ children, className, onClick, buttonProps = {} }: Props) {
+export function Button({
+  children,
+  className,
+  onClick,
+  buttonProps = {},
+}: Props) {
   return (
     <button
       {...buttonProps}
