@@ -19,8 +19,8 @@ export function Button({ children, className, onClick, buttonProps = {} }: Props
       {...buttonProps}
       onClick={onClick}
       className={classNames(
-        "py-[var(--size-spacing-small)] px-[var(--size-spacing-medium)] bg-[color:var(--color-base-gray-medium)] text-[color:var(--color-base-gray-dark)] hover:shadow-lg hover:bg-[color:var(--color-base-gray-light)]",
-        "rounded focus:ring transition duration-200",
+        "py-[var(--size-spacing-small)] px-[var(--size-spacing-medium)] bg-[color:var(--color-base-gray-medium)] text-[color:var(--color-base-gray-dark)] hover:bg-[color:var(--color-base-gray-light)]",
+        "rounded focus:ring transition duration-200 hover:shadow-lg",
         className,
       )}
     >
