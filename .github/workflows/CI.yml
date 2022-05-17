@@ -25,6 +25,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm ci
+      - run: npm run pretest
       - run: npm run test:lint
       - run: npm run test:deps
       - run: npm run test:types
@@ -46,6 +47,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm ci
+      - run: npm run pretest
       - run: npm run test:lint
       - run: npm run test:deps
       - run: npm run test:types
@@ -65,6 +67,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm ci
+      - run: npm run pretest
       - run: npm run test:unit:coverage
       - uses: codecov/codecov-action@v2
         with:
@@ -98,4 +101,5 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm ci
+      - run: npm run pretest
       - run: npm run test:playground:smoketest
