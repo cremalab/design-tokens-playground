@@ -61,5 +61,11 @@
       "extends": ["plugin:storybook/recommended"]
     }
   ],
-  "ignorePatterns": ["**/build/**", "**/coverage/**", "**/design-tokens/**"]
+  "ignorePatterns": [
+    "**/build/**",
+    "**/coverage/**",
+    "**/design-tokens/**",
+    "**/src/variables.js",
+    "**/src/variables.css"
+  ]
 }

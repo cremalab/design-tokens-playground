@@ -2,3 +2,5 @@
 build
 coverage
 design-tokens
+variables.css
+variables.js
