@@ -29,7 +29,7 @@ export function Button({
       {...buttonProps}
       onClick={onClick}
       className={classNames(
-        "py-[var(--size-spacing-small)] px-[var(--size-spacing-medium)] bg-[color:var(--color-base-gray-medium)] text-[color:var(--color-base-gray-dark)] hover:bg-[color:var(--color-base-gray-light)]",
+        "py-[var(--space-100)] px-[var(--space-500)] bg-[color:var(--global-color-gray-900)] text-[color:var(--global-color-neutrals-white)] hover:bg-[color:var(--global-color-gray-700)]",
         "rounded focus:ring transition duration-200 hover:shadow-lg",
         className,
       )}
