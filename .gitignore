@@ -10,6 +10,8 @@
 
 # production
 /build
+/src/variables.css
+/src/variables.js
 
 # misc
 .DS_Store

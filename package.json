@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "classnames": "^2.3.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-scripts": "5.0.1",
@@ -40,11 +41,15 @@
     "husky": "7.0.4",
     "husky-add-issue-tracker": "0.1.1",
     "hygen": "6.2.0",
+    "lodash.kebabcase": "^4.1.1",
     "npm-run-all": "4.1.5",
     "prettier": "2.6.2",
     "serve": "13.0.2",
     "source-map-explorer": "2.5.2",
     "start-server-and-test": "1.14.0",
+    "style-dictionary": "^3.7.0",
+    "tailwindcss": "^3.0.24",
+    "token-transformer": "^0.0.24",
     "typescript": "4.6.4",
     "wait-on": "6.0.1",
     "webpack": "5.72.0"
@@ -60,10 +65,13 @@
     "new:component": "hygen component new",
     "new:type": "hygen type new",
     "new:util": "hygen util new",
+    "styles:build": "run-s styles:transform:token styles:build:variables",
+    "styles:build:variables": "node ./design-tokens/build-tokens.js",
+    "styles:transform:token": "token-transformer './design-tokens/tokens/tokens.json' './design-tokens/tokens/tokens_transformed.json' global --expandShadow=false --expandTypography=true",
     "static": "serve -s build -p 5000",
     "deps:graph": "depcruise --validate --output-type dot -- src | dot -T svg > dependency-graph.svg",
     "deps:report": "depcruise --validate --output-type err-html --output-to dependency-report.html -- src",
-    "test:ci": "cross-env CI=true run-s test:lint test:deps test:types \"test:unit -- -i\" test:e2e:ci",
+    "test:ci": "cross-env CI=true run-s styles:build test:lint test:deps test:types \"test:unit -- -i\" test:e2e:ci",
     "test:deps": "depcruise --validate -- src",
     "test:e2e": "cypress run",
     "test:e2e:ci": "cross-env CYPRESS_baseUrl=http://localhost:5000 start-server-and-test start:ci http://localhost:5000 \"cypress run --port 5052\"",
@@ -82,7 +90,11 @@
     "test:analyze:explore": "source-map-explorer build/static/js/main.*",
     "build-storybook": "build-storybook -s public",
     "storybook": "start-storybook -p 6006 -s public",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prestart": "npm run styles:build",
+    "prebuild": "npm run styles:build",
+    "prestart:ci": "npm run styles:build",
+    "pretest": "npm run styles:build"
   },
   "jest": {
     "collectCoverageFrom": [
