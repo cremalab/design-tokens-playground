@@ -26,4 +26,22 @@ StyleDictionary.registerTransform({
   }
 });
 
+StyleDictionary.registerTransform({
+  name: 'shadow/css',
+  type: 'value',
+  matcher: (token) => {
+    return token.original.type === 'boxShadow';
+  },
+  transformer: (token) => {
+    const {
+      blur,
+      color,
+      x,
+      y,
+      spread,
+    } = token.original.value;
+    return  `${x}px ${y}px ${blur}px ${spread}px ${color}`
+  }
+});
+
 StyleDictionary.extend('./design-tokens/config.json').buildAllPlatforms();

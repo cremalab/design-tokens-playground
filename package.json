@@ -67,7 +67,7 @@
     "new:util": "hygen util new",
     "styles:build": "run-s styles:transform:token styles:build:variables",
     "styles:build:variables": "node ./design-tokens/build-tokens.js",
-    "styles:transform:token": "token-transformer './design-tokens/tokens/tokens.json' './design-tokens/tokens/tokens_transformed.json' global --expandShadow --expandTypography",
+    "styles:transform:token": "token-transformer './design-tokens/tokens/tokens.json' './design-tokens/tokens/tokens_transformed.json' global --expandShadow=false --expandTypography=true",
     "static": "serve -s build -p 5000",
     "deps:graph": "depcruise --validate --output-type dot -- src | dot -T svg > dependency-graph.svg",
     "deps:report": "depcruise --validate --output-type err-html --output-to dependency-report.html -- src",

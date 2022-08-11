@@ -3,7 +3,7 @@
   "platforms": {
     "css/variables": {
       "transformGroup": "css",
-      "transforms": ["attribute/cti", "name/cti/kebab", "time/seconds", "content/icon", "size/rem", "color/css", "sizing/pxToRem", "spacing/pxToRem"],
+      "transforms": ["attribute/cti", "name/cti/kebab", "time/seconds", "content/icon", "size/px", "color/css", "sizing/pxToRem", "spacing/pxToRem", "shadow/css"],
       "buildPath": "./src/",
       "files": [{
         "destination": "variables.css",
